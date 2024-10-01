@@ -39,6 +39,4 @@ jobs:
           aws codeartifact login --tool npm --repository rn-generator --domain rn-generator --domain-owner 533267230957 --region ap-south-1
 
       - name: Publish Package
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        run: npm publish
