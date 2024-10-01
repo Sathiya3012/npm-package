@@ -41,8 +41,8 @@ jobs:
 
       - name: Authenticate with AWS CodeArtifact
         run: |
-          export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain 	rn-generator --domain-owner 533267230957 --query authorizationToken --output text`
-          npm config set //my_domain-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/my_repo/:_authToken=$CODEARTIFACT_AUTH_TOKEN
+          export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain rn-generator --domain-owner 533267230957 --query authorizationToken --output text`
+          npm config set //my_domain-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/	rn-generator/:_authToken=$CODEARTIFACT_AUTH_TOKEN
 
       - name: Publish Package
         run: npm publish --access public
