@@ -1,5 +1,5 @@
 {
-  "name": "sathiya_random_number_generator_test",
+  "name": "sathiya_random_number_generator",
   "version": "1.0.3",
   "description": "Random Number Generator",
   "main": "index.js",
