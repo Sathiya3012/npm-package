@@ -35,13 +35,7 @@ jobs:
 
       - name: Authenticate with AWS CodeArtifact
         run: |
-          echo "Authenticating with AWS CodeArtifact..."
-          CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain rn-generator --domain-owner 533267230957 --region ap-south-1 --query authorizationToken --output text)
-          echo "//rn-generator-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/rn-generator/:_authToken=${CODEARTIFACT_AUTH_TOKEN}" >> ~/.npmrc
-          echo "registry=https://rn-generator-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/rn-generator/" >> ~/.npmrc
-          echo "//rn-generator-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/rn-generator/:always-auth=true" >> ~/.npmrc
+          aws codeartifact login --tool npm --repository rn-generator --domain rn-generator --domain-owner 533267230957 --region ap-south-1
 
       - name: Publish Package
         run: npm publish
-        env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
