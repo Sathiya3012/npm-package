@@ -1,13 +1,15 @@
 name: Release
-
 on:
   push:
     branches:
       - main
+      - npm-package
+env:
+  AWS_REGION: "ap-south-1"
+
 permissions:
-  contents: write
-  issues: write
-  pull-requests: write
+  id-token: write   
+  contents: read    
 
 jobs:
   release:
@@ -15,17 +17,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::533267230957:role/github-oidc-role
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          registry-url: https://registry.npmjs.org
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Authenticate with AWS CodeArtifact
+        run: |
+          aws codeartifact login --tool npm --repository rn-generator --domain rn-generator --domain-owner 533267230957 --region ap-south-1
+    
+      - name: Publish Package
+        run: npm publish

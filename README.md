@@ -2,12 +2,12 @@
 
 ## Installation 
 
-Run `npm i sathiya_random_number_generator`
+Run `npm i test_random_number_generator`
 
 Use:
 
 ````
-import rng from 'sathiya_random_number_generator';
+import rng from 'test_random_number_generator';
 
 rng(10, 50);
 
