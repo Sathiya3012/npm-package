@@ -45,4 +45,6 @@ jobs:
           npm config set //my_domain-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/my_repo/:_authToken=$CODEARTIFACT_AUTH_TOKEN
 
       - name: Publish Package
-        run: npm publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
