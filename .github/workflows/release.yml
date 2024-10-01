@@ -4,25 +4,28 @@ on:
   push:
     branches:
       - main
-      - npm-package
 permissions:
   contents: write
   issues: write
   pull-requests: write
 
 jobs:
-   release:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout
-              uses: actions/checkout@v4
-            - name: node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '18'
-                  registry-url: https://registry.npmjs.org
-            - name: publish
-              run: npm publish --access public
-              working-directory: my-package
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
