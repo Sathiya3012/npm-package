@@ -19,9 +19,8 @@ jobs:
             - name: node
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: '18'
                   registry-url: https://registry.npmjs.org
-                  always-auth: true
             - name: publish
               run: npm publish --access public
               working-directory: my-package
