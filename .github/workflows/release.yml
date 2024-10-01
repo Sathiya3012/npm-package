@@ -1,11 +1,9 @@
 name: Release
-
 on:
   push:
     branches:
       - main
       - npm-package
-
 env:
   AWS_REGION: "ap-south-1"
 
