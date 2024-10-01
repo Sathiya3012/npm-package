@@ -36,7 +36,7 @@ jobs:
 
       - name: Authenticate with AWS CodeArtifact
         run: |
-          makedir .npmrc
+          mkdir .npmrc
           aws codeartifact login --tool npm --repository rn-generator --domain rn-generator --domain-owner 533267230957 --region ap-south-1
       - name: Verify NPM Authentication
         run: cat ~/.npmrc
