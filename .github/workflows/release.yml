@@ -45,6 +45,4 @@ jobs:
           npm config set //rn-generator-533267230957.d.codeartifact.ap-south-1.amazonaws.com/npm/rn-generator/:_authToken=$CODEARTIFACT_AUTH_TOKEN
 
       - name: Publish Package
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: npm publish 
