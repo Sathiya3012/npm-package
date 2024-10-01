@@ -2,7 +2,7 @@
 
 ## Installation 
 
-Run `npm i satz_random_number_generator`
+Run `npm i sathiya_random_number_generator`
 
 Use:
 
