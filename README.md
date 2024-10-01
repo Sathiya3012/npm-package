@@ -7,7 +7,7 @@ Run `npm i sathiya_random_number_generator`
 Use:
 
 ````
-import rng from 'satz_random_number_generator';
+import rng from 'sathiya_random_number_generator';
 
 rng(10, 50);
 
