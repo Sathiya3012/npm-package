@@ -1,6 +1,6 @@
 {
   "name": "sathiya_random_number_generator_test",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Random Number Generator",
   "main": "index.js",
   "type": "module",
